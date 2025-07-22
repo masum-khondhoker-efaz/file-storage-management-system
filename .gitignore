@@ -6,3 +6,4 @@ dist
 generate-module.ts
 .idea
 .vscode
+.vercel

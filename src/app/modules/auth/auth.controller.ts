@@ -14,7 +14,7 @@ const loginUser = catchAsync(async (req, res) => {
 
 const refreshToken = catchAsync(async (req, res) => {
   const refreshToken = req.headers.authorization as string;
- 
+
   const result = await AuthServices.refreshTokenFromDB(refreshToken);
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -25,7 +25,7 @@ const refreshToken = catchAsync(async (req, res) => {
 
 const logoutUser = catchAsync(async (req, res) => {
   const user = req.user as any;
-  await AuthServices.logoutUserFromDB(user.id);
+  const result = await AuthServices.logoutUserFromDB(user.id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     message: 'User logged out successfully',

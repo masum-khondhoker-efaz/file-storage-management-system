@@ -17,7 +17,7 @@ const loginUserFromDB = async (payload: {
       email: payload.email,
     },
   });
-  const isCorrectPassword: boolean = await bcrypt.compare(
+  const isCorrectPassword: Boolean = await bcrypt.compare(
     payload.password,
     userData.password,
   );
