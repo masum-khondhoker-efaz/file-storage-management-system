@@ -9,8 +9,7 @@ A robust and secure file storage management system built with Node.js, TypeScrip
 - **Role-based Access Control**: Support for USER, ADMIN, and SUPER_ADMIN roles
 - **Email Verification**: OTP-based email verification system
 - **Password Security**: BCrypt password hashing
-- **Account Status Management**: Active, Inactive, and Blocked user states
-- **FCM Token Support**: Push notification capabilities
+
 
 ### File Management
 - **File Upload & Download**: Support for multiple file types
@@ -32,9 +31,8 @@ A robust and secure file storage management system built with Node.js, TypeScrip
 - **Input Validation**: Zod schema validation for all inputs
 
 ### Cloud Storage Integration
-- **Multiple Storage Providers**: Support for AWS S3, Cloudinary, and Firebase
+- **Multiple Storage Providers**: Support for AWS S3, Cloudinary
 - **File Upload Optimization**: Efficient file handling with Multer
-- **Real-time Updates**: WebSocket support for live updates
 
 ## 🛠️ Technology Stack
 
@@ -63,7 +61,7 @@ A robust and secure file storage management system built with Node.js, TypeScrip
 
 - Node.js (v16 or higher)
 - MongoDB database
-- Cloud storage account (AWS S3, Cloudinary, or Firebase)
+- Cloud storage account (AWS S3, Cloudinary)
 - SMTP email service for notifications
 
 ## 🔧 Installation
@@ -133,171 +131,16 @@ A robust and secure file storage management system built with Node.js, TypeScrip
    ```
 
 ## 📚 API Documentation
+```
+https://documenter.getpostman.com/view/36263256/2sB34miHws
+```
 
 ### Base URL
 ```
-http://localhost:5000/api/v1
+http://localhost:6000/api/v1
 ```
 
-### Authentication Endpoints
 
-#### Register User
-```http
-POST /auth/register
-Content-Type: application/json
-
-{
-  "fullName": "John Doe",
-  "email": "john@example.com",
-  "password": "securePassword123"
-}
-```
-
-#### Login User
-```http
-POST /auth/login
-Content-Type: application/json
-
-{
-  "email": "john@example.com",
-  "password": "securePassword123"
-}
-```
-
-#### Refresh Token
-```http
-POST /auth/refresh-token
-Authorization: Bearer <refresh_token>
-```
-
-### User Management Endpoints
-
-#### Get User Profile
-```http
-GET /users/profile
-Authorization: Bearer <access_token>
-```
-
-#### Update User Profile
-```http
-PATCH /users/profile
-Authorization: Bearer <access_token>
-Content-Type: application/json
-
-{
-  "fullName": "John Updated",
-  "image": "profile_image_url"
-}
-```
-
-#### Get Storage Statistics
-```http
-GET /users/storage-stats
-Authorization: Bearer <access_token>
-```
-
-### File Management Endpoints
-
-#### Upload File
-```http
-POST /files/upload
-Authorization: Bearer <access_token>
-Content-Type: multipart/form-data
-
-{
-  "file": <file_data>,
-  "isPrivate": false,
-  "password": "optional_password"
-}
-```
-
-#### Get User Files
-```http
-GET /files?page=1&limit=10&sortBy=createdAt&sortOrder=desc
-Authorization: Bearer <access_token>
-```
-
-#### Get File by ID
-```http
-GET /files/:fileId
-Authorization: Bearer <access_token>
-```
-
-#### Download File
-```http
-GET /files/:fileId/download
-Authorization: Bearer <access_token>
-```
-
-#### Update File
-```http
-PATCH /files/:fileId
-Authorization: Bearer <access_token>
-Content-Type: application/json
-
-{
-  "fileName": "new_name.pdf",
-  "isPrivate": true,
-  "isFavorite": true
-}
-```
-
-#### Delete File
-```http
-DELETE /files/:fileId
-Authorization: Bearer <access_token>
-```
-
-#### Toggle Favorite
-```http
-PATCH /files/:fileId/favorite
-Authorization: Bearer <access_token>
-```
-
-### Folder Management Endpoints
-
-#### Create Folder
-```http
-POST /folders
-Authorization: Bearer <access_token>
-Content-Type: application/json
-
-{
-  "folderName": "My Documents",
-  "isPrivate": false,
-  "password": "optional_password"
-}
-```
-
-#### Get User Folders
-```http
-GET /folders?page=1&limit=10
-Authorization: Bearer <access_token>
-```
-
-#### Get Folder by ID
-```http
-GET /folders/:folderId
-Authorization: Bearer <access_token>
-```
-
-#### Update Folder
-```http
-PATCH /folders/:folderId
-Authorization: Bearer <access_token>
-Content-Type: application/json
-
-{
-  "folderName": "Updated Folder Name",
-  "isPrivate": true
-}
-```
-
-#### Delete Folder
-```http
-DELETE /folders/:folderId
-Authorization: Bearer <access_token>
-```
 
 ## 🏗️ Project Structure
 
@@ -393,25 +236,7 @@ npm run prettier:check  # Check code formatting
 npm run prettier:fix    # Fix code formatting
 ```
 
-## 🌐 Deployment
 
-### Production Environment Setup
-
-1. **Environment Variables**: Configure all production environment variables
-2. **Database**: Set up MongoDB production instance
-3. **Cloud Storage**: Configure production cloud storage accounts
-4. **SSL Certificate**: Enable HTTPS for secure file transfers
-5. **Domain Configuration**: Update CORS settings for production domain
-
-### Vercel Deployment (Configured)
-The project includes `vercel.json` for easy deployment to Vercel platform.
-
-## 🔄 WebSocket Integration
-
-The system includes WebSocket support for real-time features:
-- Live file upload progress
-- Real-time storage usage updates
-- Instant notifications for file operations
 
 ## 📝 Error Handling
 
@@ -421,12 +246,6 @@ Comprehensive error handling system with:
 - **Zod Validation Errors**: Detailed input validation feedback
 - **HTTP Status Codes**: Proper status code management
 
-## 🧪 Testing
-
-Currently configured for testing setup. Run tests with:
-```bash
-npm test
-```
 
 ## 🤝 Contributing
 
@@ -440,19 +259,5 @@ npm test
 
 This project is licensed under the ISC License.
 
-## 👥 Support
 
-For support and questions:
-- Create an issue in the GitHub repository
-- Contact the development team
-- Check the documentation for common solutions
 
-## 🔮 Future Enhancements
-
-- File sharing capabilities with expiration links
-- Advanced search and filtering options
-- File versioning and history tracking
-- Collaborative file editing features
-- Integration with more cloud storage providers
-- Mobile application support
-- Advanced analytics and reporting
